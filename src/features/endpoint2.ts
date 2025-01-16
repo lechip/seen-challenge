@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { seenApiClient } from '../services/seenApiClient';
+import { getTransactionsFromSeenApi } from '../client/seen-api-client';
 
-export const endpoint1 = async (req: Request, res: Response) => {
+export const endpoint2 = async (req: Request, res: Response) => {
   try {
-    const data = await seenApiClient();
+    const data = await getTransactionsFromSeenApi();
     // Aggregate or process data here
     res.json({ data });
   } catch (error: unknown) {

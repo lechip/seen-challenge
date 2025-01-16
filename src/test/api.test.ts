@@ -1,10 +1,10 @@
 import request from 'supertest';
 import express from 'express';
-import { endpoint1 } from '../routes/endpoint1';
-import { endpoint2 } from '../routes/endpoint2';
+import { getTransactionsByCustomer } from '../features/customer-transactions/customer-transactions-controller';
+import { endpoint2 } from '../features/endpoint2';
 
 const app = express();
-app.get('/endpoint1', endpoint1);
+app.get('/endpoint1', getTransactionsByCustomer);
 app.get('/endpoint2', endpoint2);
 
 jest.mock('../services/seenApiClient', () => ({
