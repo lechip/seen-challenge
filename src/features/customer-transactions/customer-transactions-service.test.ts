@@ -1,5 +1,5 @@
 import seenTestData from "../../test/test-data/seen-api-test-data.json"
-import * as seenApiClient from '../../client/seen-api-client';
+import * as seenApiClient from '../../common/client/seen-api-client';
 import { serviceGetTransactionsByCustomer } from "./customer-transactions-service";
 import { Transaction } from "./types";
 

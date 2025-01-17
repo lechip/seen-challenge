@@ -1,14 +1,14 @@
 import express, { Request, Response } from "express";
 
-import { getTransactionsByCustomer } from "./features/customer-transactions";
-import { endpoint2 } from "./features/endpoint2";
+import { getTransactionsByCustomerId } from "./features/customer-transactions";
+import { getRelatedCustomersByCustomerId } from "./features/related-customers/related-customers-controller";
 
 const PORT = 3000; // Can be exported into env file
 
 const app = express();
 
-app.get('/customer-transactions/:customerId', getTransactionsByCustomer);
-app.get('/endpoint2', endpoint2);
+app.get('/customer-transactions/:customerId', getTransactionsByCustomerId);
+app.get('/related-customers/:customerId', getRelatedCustomersByCustomerId);
 
 // Fallback route
 app.use((req: Request, res: Response) => {

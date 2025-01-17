@@ -1,6 +1,6 @@
-import { getTransactionsFromSeenApi } from "../../client/seen-api-client";
-import { SeenApiDataItem } from "../../client/types";
-import { Transaction, TransactionTimelineItem } from "./types"
+import { getTransactionsFromSeenApi } from "../../common/client/seen-api-client";
+import { SeenApiDataItem } from "../../common/client/types";
+import { Transaction } from "./types"
 
 type TransactionsMap = Record<string, SeenApiDataItem[]>;
 

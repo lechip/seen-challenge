@@ -15,5 +15,8 @@ export type SeenApiDataItem = {
   transactionStatus: "PENDING" | "SETTLED" | "RETURNED" | "FAILED";
   description: string;
   amount: number;
-  metadata: Record<string, unknown>;
+  metadata: {
+    relatedTransactionId?: number,
+    deviceId?: string,
+  };
 };

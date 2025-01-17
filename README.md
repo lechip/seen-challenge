@@ -92,4 +92,5 @@ src
 - [ ] Complete README
   - [ ] Technologies
   - [ ] API explaination
+- [ ] Refactor the controller logic (or add validator)
 - [ ] Host it somewhere (?)
