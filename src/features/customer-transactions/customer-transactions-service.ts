@@ -11,7 +11,8 @@ export const serviceGetTransactionsByCustomer = async (customerId: number): Prom
   // build transaction hash-map build map from transaction related by authorization code sorted from oldest to newest
   const groupedTransactions = groupAndSortTransactionsByAuthorizationCode(filteredDataByCustomer)
   // for each one of the elements of the map, take the last transaction an build the transaction object
-  const responseTransactions = Object.keys(groupedTransactions).flatMap(transactionGroupKey => mapSortedDataToTransactionResponse(groupedTransactions[transactionGroupKey], transactionGroupKey))
+  const responseTransactions = Object.keys(groupedTransactions)
+    .flatMap(transactionGroupKey => mapSortedDataToTransactionResponse(groupedTransactions[transactionGroupKey], transactionGroupKey))
   return responseTransactions
 }
 

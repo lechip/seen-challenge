@@ -1,6 +1,7 @@
 import { getTransactionsFromSeenApi } from "../../common/client/seen-api-client";
 import { SeenApiDataItem } from "../../common/client/types";
-import { CustomerRelationship } from "./types";
+import { TransactionType } from "../../common/types";
+import { CustomerRelationship, RelationType } from "./types";
 
 export const serviceGetRelatedCustomersByCustomerId = async (customerId: number): Promise<CustomerRelationship[]> => {
   // filter customer transactions
@@ -21,7 +22,8 @@ const getRelatedCustomersByTransfer = (
 ): CustomerRelationship[] => {
   // Find customer's transfer transactions // TODO: here seems to be the issue
   const relatedTransactionIds = seenData
-    .filter((transaction) => transaction.customerId === customerId && (transaction.transactionType === "P2P_SEND" || transaction.transactionType === "P2P_RECEIVE"))
+    .filter((transaction) => transaction.customerId === customerId &&
+      (transaction.transactionType === TransactionType.P2P_SEND || transaction.transactionType === TransactionType.P2P_RECEIVE))
     .map((transaction) => transaction.metadata.relatedTransactionId)
 
   // If no trasnaction IDs are found, return an empty array
@@ -34,7 +36,11 @@ const getRelatedCustomersByTransfer = (
       relatedTransactionIds.includes(transaction.transactionId) &&
       transaction.customerId !== customerId // Exclude the customer that is being queried
   )
-  const relatedCustomerItems = others.map((transaction) => ({ relatedCustomerId: transaction.customerId, relationType: transaction.transactionType === "P2P_SEND" ? "P2P_SEND" : "P2P_RECEIVE" }));
+  const relatedCustomerItems = others
+    .map((transaction) => ({
+      relatedCustomerId: transaction.customerId,
+      relationType: transaction.transactionType === TransactionType.P2P_SEND ? RelationType.P2P_SEND : RelationType.P2P_RECEIVE
+    }));
 
   // Remove duplicates
   return Array.from(new Set(relatedCustomerItems)) as CustomerRelationship[];
@@ -67,5 +73,6 @@ const getRelatedCustomersByDevice = (
   // Remove duplicates
   const dedupRelatedCustomerIds = Array.from(new Set(relatedCustomerIds));
 
-  return dedupRelatedCustomerIds.map(relatedCustomerId => ({ relatedCustomerId, relationType: "DEVICE" }))
+  return dedupRelatedCustomerIds
+    .map(relatedCustomerId => ({ relatedCustomerId, relationType: RelationType.DEVICE }))
 };

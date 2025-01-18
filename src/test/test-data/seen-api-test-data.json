@@ -425,5 +425,18 @@
     "metadata": {
       "relatedTransactionId": 9
     }
+  },
+  {
+    "transactionId": 35,
+    "authorizationCode": "B4N4N4",
+    "transactionDate": "2025-01-01T13:05:00+00:00",
+    "customerId": 10,
+    "transactionType": "POS",
+    "transactionStatus": "PENDING",
+    "description": "Fika Coffee",
+    "amount": 10,
+    "metadata": {
+      "deviceId": "F210200"
+    }
   }
 ]

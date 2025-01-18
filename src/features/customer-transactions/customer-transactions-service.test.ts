@@ -3,11 +3,15 @@ import * as seenApiClient from '../../common/client/seen-api-client';
 import { serviceGetTransactionsByCustomer } from "./customer-transactions-service";
 import { Transaction } from "./types";
 
-jest.mock("../../client/seen-api-client", () => ({
+jest.mock('../../common/client/seen-api-client', () => ({
   getTransactionsFromSeenApi: jest.fn().mockResolvedValue(seenTestData),
 }));
 
 describe("customer-transactions-service", () => {
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   it("returns the sorted transactions by customer", async () => {
     const customerId = 1;
