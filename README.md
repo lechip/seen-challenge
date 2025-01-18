@@ -66,7 +66,8 @@ npm run test
 
 ```text
 src
-├── client                       # Shared client (external API) logic
+├── common                       # Shared logic
+│   └── client                   # Shared client (external API) logic
 ├── features                     # feature based organization
 │   ├── customer-transactions    # API 1: Customer transactions
 │   └── related-customers        # API 2: Related Customers
@@ -86,9 +87,8 @@ src
 
 - [x] Make first endpoint
   - [x] Test (use TDD)
-- [ ] Make second endpoint
-  - [ ] Test (use TDD)
-- [ ] Documentaiton of endpoints
+- [x] Make second endpoint
+  - [x] Test (use TDD)
 - [ ] Complete README
   - [ ] Technologies
   - [ ] API explaination
