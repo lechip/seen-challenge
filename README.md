@@ -17,6 +17,7 @@ Seen has provided you with an [API to retrieve a set of sample transactions](htt
 - I kept things relatively simple, the challenge mentions there are two different users of the API but I simplified to a unified API. There could be changes such as types of authentication (perhaps the front-end with a JWT vs the backend with a service mesh internal authorization, for example) but I think I spent enough time on the challenge.
 - I added tests for the service (service logic) and for the controller as integration tests. This is a compromise between keeping things sufficiently tested at the logical level and as close as E2E without having to hit external services.
 - I used types for both downstream API responses and for external responses. These types could later be used to document the endpoints.
+- A relatively low hanging fruit is to write a validation middleware for validating the `customerId` however I will leave that out since extending express `Request` object is non trivial and I want to time constrain the code challenge.
 
 ### API Endpoint 1: `/customer-transactions/:customerId`
 
@@ -101,4 +102,3 @@ src
 - [x] Complete README
   - [x] Technologies
   - [x] API explaination
-- [ ] Refactor the controller logic (or add validator)
