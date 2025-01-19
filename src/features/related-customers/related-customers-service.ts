@@ -20,7 +20,7 @@ const getRelatedCustomersByTransfer = (
   seenData: SeenApiDataItem[],
   customerId: number
 ): CustomerRelationship[] => {
-  // Find customer's transfer transactions // TODO: here seems to be the issue
+  // Find customer's transfer transactions
   const relatedTransactionIds = seenData
     .filter((transaction) => transaction.customerId === customerId &&
       (transaction.transactionType === TransactionType.P2P_SEND || transaction.transactionType === TransactionType.P2P_RECEIVE))
